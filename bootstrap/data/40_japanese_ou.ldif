@@ -1,0 +1,25 @@
+version: 1
+# Reference: https://datatracker.ietf.org/doc/html/rfc2849
+# dn: ou=テスト,dc=planetexpress,dc=com
+dn:: b3U944OG44K544OILGRjPXBsYW5ldGV4cHJlc3MsZGM9Y29t
+objectClass: top
+objectClass: organizationalUnit
+description: Japanese Characters Test
+# ou: テスト
+ou:: 44OG44K544OICg==
+
+# dn: cn=jdoe,ou=テスト,dc=planetexpress,dc=com
+dn:: Y249amRvZSxvdT3jg4bjgrnjg4gsZGM9cGxhbmV0ZXhwcmVzcyxkYz1jb20=
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: John
+sn: Doe
+description: Test Person in Japanese OU
+givenName: John
+jpegPhoto:
+mail: jdoe@example.com
+# ou: テスト
+ou:: 44OG44K544OICg==
+userPassword:
