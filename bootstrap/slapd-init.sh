@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 set -eu
 
 readonly DATA_DIR="/bootstrap/data"
@@ -13,6 +13,8 @@ readonly LDAP_SSL_KEY="/etc/ldap/ssl/ldap.key"
 readonly LDAP_SSL_CERT="/etc/ldap/ssl/ldap.crt"
 
 
+# Note 2023-07-25: the HDB backend has been archived in slapd >=2.5. The
+# primary backend recommended by the OpenLDAP project is the MDB backend.
 reconfigure_slapd() {
     echo "Reconfigure slapd..."
     cat <<EOL | debconf-set-selections
@@ -23,7 +25,7 @@ slapd slapd/password1 password ${LDAP_SECRET}
 slapd slapd/dump_database_destdir string /var/backups/slapd-VERSION
 slapd slapd/domain string ${LDAP_DOMAIN}
 slapd shared/organization string ${LDAP_ORGANISATION}
-slapd slapd/backend string HDB
+slapd slapd/backend string MDB
 slapd slapd/purge_database boolean true
 slapd slapd/move_old_database boolean true
 slapd slapd/allow_ldap_v2 boolean false

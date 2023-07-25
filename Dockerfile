@@ -1,11 +1,13 @@
-FROM debian:stretch-slim
+FROM debian:12-slim
 MAINTAINER Rafael Römhild <rafael@roemhild.de>
 
 # Install slapd and requirements
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get \
         install -y --no-install-recommends \
+            bash \
             slapd \
+            slapd-contrib \
             ldap-utils \
             openssl \
             ca-certificates \
@@ -21,11 +23,11 @@ COPY ./run.sh /run.sh
 ADD ./bootstrap /bootstrap
 
 # Initialize LDAP with data
-RUN /bin/bash /bootstrap/slapd-init.sh
+RUN /usr/bin/bash /bootstrap/slapd-init.sh
 
 VOLUME ["/etc/ldap/slapd.d", "/etc/ldap/ssl", "/var/lib/ldap", "/run/slapd"]
 
 EXPOSE 389 636
 
-CMD ["/bin/bash", "/run.sh"]
+CMD ["/usr/bin/bash", "/run.sh"]
 ENTRYPOINT []
