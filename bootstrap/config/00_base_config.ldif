@@ -1,0 +1,6 @@
+dn: cn=config
+changetype: modify
+
+# Enable 64-bit indexes
+replace: olcIndexHash64
+olcIndexHash64: TRUE
