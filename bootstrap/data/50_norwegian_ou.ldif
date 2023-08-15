@@ -1,0 +1,30 @@
+version: 1
+
+dn:: b3U9Tm9yZ2UgR2rDuHZpayxkYz1wbGFuZXRleHByZXNzLGRjPWNvbQ==
+objectClass: organizationalUnit
+objectClass: top
+ou:: Tm9yZ2UgR2rDuHZpaw==
+description:: w5ggdGVzdA==
+
+dn:: Y249amRvZSxvdT1Ob3JnZSBHasO4dmlrLGRjPXBsYW5ldGV4cHJlc3MsZGM9Y29t
+objectClass: inetOrgPerson
+objectClass: organizationalPerson
+objectClass: person
+objectClass: top
+cn: jdoe
+cn: John
+sn: Doe
+description: Test person in Norwegian OU
+givenName: John
+jpegPhoto:: 
+mail: jdoe@example.com
+ou:: Tm9yZ2UgR2rDuHZpaw==
+userPassword:: 
+
+dn:: b3U9Tm9yZ2UgR2rDuHZpayxvdT1Ob3JnZSBHasO4dmlrLGRjPXBsYW5ldGV4cHJlc3MsZGM
+ 9Y29t
+objectClass: organizationalUnit
+objectClass: top
+ou:: Tm9yZ2UgR2rDuHZpaw==
+description: Norwegian Characters Test
+
