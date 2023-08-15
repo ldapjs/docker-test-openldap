@@ -15,6 +15,20 @@ readonly LDAP_SSL_CERT="/etc/ldap/ssl/ldap.crt"
 
 # Note 2023-07-25: the HDB backend has been archived in slapd >=2.5. The
 # primary backend recommended by the OpenLDAP project is the MDB backend.
+#
+# Note 2023-08-02: the MDB backend has a longstanding bug with CNs that
+# exceed 512 characters (https://bugs.openldap.org/show_bug.cgi?id=10088).
+# Somehow, this prevents us from using it.
+# https://github.com/ldapjs/node-ldapjs/blob/1cc6a73/test-integration/client/issues.test.js#L12-L41
+# triggers the issue, but neither the CN value nor the full DN exceeds the
+# imposed 512 character limit.
+#
+# Note 2023-08-15: https://bugs.openldap.org/show_bug.cgi?id=10088#c13 indicates
+# that the bug is triggered with RDNs exceeding 256 characters because of some
+# "normalizer" feature. Our solution at this time is to reduce the length of
+# our offending RDN. Our original issue, https://github.com/ldapjs/node-ldapjs/issues/480
+# states a problem with with RDNs exceeding 132 characters, so we will reduce
+# our test to exceed that but not offend OpenLDAP.
 reconfigure_slapd() {
     echo "Reconfigure slapd..."
     cat <<EOL | debconf-set-selections
@@ -51,6 +65,10 @@ make_snakeoil_certificate() {
     chmod 600 ${LDAP_SSL_KEY}
 }
 
+configure_base() {
+    echo "Configure base..."
+    ldapmodify -Y EXTERNAL -H ldapi:/// -f ${CONFIG_DIR}/00_base_config.ldif -Q
+}
 
 configure_tls() {
     echo "Configure TLS..."
@@ -102,6 +120,7 @@ make_snakeoil_certificate
 chown -R openldap:openldap /etc/ldap
 slapd -h "ldapi:///" -u openldap -g openldap
 
+configure_base
 configure_msad_features
 configure_tls
 configure_logging

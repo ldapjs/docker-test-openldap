@@ -7,7 +7,6 @@ RUN apt-get update \
         install -y --no-install-recommends \
             bash \
             slapd \
-            slapd-contrib \
             ldap-utils \
             openssl \
             ca-certificates \
