@@ -1,11 +1,13 @@
 version: 1
-
+#dn: ou=Norge Gjøvik,dc=planetexpress,dc=com
 dn:: b3U9Tm9yZ2UgR2rDuHZpayxkYz1wbGFuZXRleHByZXNzLGRjPWNvbQ==
 objectClass: organizationalUnit
 objectClass: top
+# ou: Norge Gjøvik
 ou:: Tm9yZ2UgR2rDuHZpaw==
-description:: w5ggdGVzdA==
+description:: Norwegian Characters Test
 
+#dn: cn=jdoe,ou=Norge Gjøvik,dc=planetexpress,dc=com
 dn:: Y249amRvZSxvdT1Ob3JnZSBHasO4dmlrLGRjPXBsYW5ldGV4cHJlc3MsZGM9Y29t
 objectClass: inetOrgPerson
 objectClass: organizationalPerson
@@ -18,13 +20,16 @@ description: Test person in Norwegian OU
 givenName: John
 jpegPhoto:: 
 mail: jdoe@example.com
+#ou: Norge Gjøvik
 ou:: Tm9yZ2UgR2rDuHZpaw==
 userPassword:: 
 
+#ou: Norge Gjøvik,ou=Norge Gjøvik,dc=planetexpress,dc
 dn:: b3U9Tm9yZ2UgR2rDuHZpayxvdT1Ob3JnZSBHasO4dmlrLGRjPXBsYW5ldGV4cHJlc3MsZGM
  9Y29t
 objectClass: organizationalUnit
 objectClass: top
+#ou: Norge Gjøvik
 ou:: Tm9yZ2UgR2rDuHZpaw==
 description: Norwegian Characters Test
 
