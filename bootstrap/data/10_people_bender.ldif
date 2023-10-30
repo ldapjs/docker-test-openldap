@@ -492,4 +492,5 @@ ou: Delivering Crew
 uid: bender
 userPassword:: e3NzaGF9amxCTnNmVVdKK0tIWHprRFVuYTJSSTBjK09PNmlGdzAxZHd3K3c9P
  Q==
+pwdPolicySubentry: cn=robot,ou=ppolicies,dc=planetexpress,dc=com
 
