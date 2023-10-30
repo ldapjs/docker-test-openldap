@@ -1,0 +1,5 @@
+dn: ou=ppolicies,dc=planetexpress,dc=com
+objectClass: top
+objectClass: organizationalUnit
+description: Password policies
+ou: ppolicies

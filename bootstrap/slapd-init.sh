@@ -91,6 +91,11 @@ configure_memberof_overlay(){
   ldapmodify -Y EXTERNAL -H ldapi:/// -f ${CONFIG_DIR}/memberof.ldif -Q
 }
 
+configure_ppolicy_overlay(){
+    echo "Configure ppolicy overlay..."
+    ldapmodify -Y EXTERNAL -H ldapi:/// -f ${CONFIG_DIR}/ppolicy.ldif -Q
+}
+
 load_initial_data() {
     echo "Load data..."
     local data=$(find ${DATA_DIR} -maxdepth 1 -name \*_\*.ldif -type f | sort)
@@ -125,6 +130,7 @@ configure_msad_features
 configure_tls
 configure_logging
 configure_memberof_overlay
+configure_ppolicy_overlay
 load_initial_data
 
 kill -INT `cat /run/slapd/slapd.pid`

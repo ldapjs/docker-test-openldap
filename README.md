@@ -48,7 +48,7 @@ $ docker build -t openldap .
 ```
 
 The result will be a Docker image built for the local system's architecture
-and stroed in the local Docker image list. Running said image would look like:
+and stored in the local Docker image list. Running said image would look like:
 
 ```sh
 $ docker run --rm -it -p 1389:389 openldap
